@@ -2,22 +2,173 @@
 <HEAD>
 <TITLE> DA VINCI CODE </TITLE>
 <style>
-        body {
-            background-image: url("human-leonardo-da-vinci-the-vitruvian-man-homo-vitruvianus.jpg");
+        body { 
+            margin: 40px;
+            background-image: url("3.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
     </style>
-<H1> <p class="center"> DA VINCI CODE </p> </H1> <HR>
+<H1 class="white-text center"> DA VINCI CODE </H1> <HR>
 </HEAD>
 <BODY>
-<H3> The Da Vinci Code is a 2006 mystery thriller film directed by Ron Howard, written by Akiva Goldsman, and based on Dan Brown's 2003 novel of the same name. </H3> <HR>
-<H3> In the film, Robert Langdon, a professor of religious symbology from Harvard University, is the prime suspect in the grisly and unusual murder of Louvre curator Jacques Saunière. On the body, the police find a disconcerting cipher and start an investigation. Langdon escapes with the assistance of police cryptologist Sophie Neveu, and they begin a quest for the legendary Holy Grail. Sir Leigh Teabing, a noted British Grail historian, tells them that the actual Holy Grail is explicitly encoded in Leonardo da Vinci's wall painting The Last Supper. Also searching for the Grail is a secret cabal within Opus Dei, an actual prelature of the Holy See, who wish to keep the true Grail a secret to prevent the destruction of Christianity.</H3>
+<div class="container">
+    <img src="images.jpg">
+    <H2 class="white-text"> <B> Duration: </B> 2h29m | 2006 | PG-13 | IMBd rating: 6.6/10  <BR> <BR> A murder and clues in paintings lead to the discovery of a closely guarded religious mystery.  </H2>
+    
 
+</div>
+<HR>
+<H3 class="white-text"> <B> <U> The Da Vinci Code </U> </B> is a 2006 mystery thriller film directed by Ron Howard, written by Akiva Goldsman, and based on Dan Brown's 2003 novel of the same name.In the film, Robert Langdon, a professor of religious symbology from Harvard University, is the prime suspect in the grisly and unusual murder of Louvre curator Jacques Saunière. On the body, the police find a disconcerting cipher and start an investigation. Langdon escapes with the assistance of police cryptologist Sophie Neveu, and they begin a quest for the legendary Holy Grail. Sir Leigh Teabing, a noted British Grail historian, tells them that the actual Holy Grail is explicitly encoded in Leonardo da Vinci's wall painting The Last Supper. Also searching for the Grail is a secret cabal within Opus Dei, an actual prelature of the Holy See, who wish to keep the true Grail a secret to prevent the destruction of Christianity.</H3>
+<HR>
+<H2 class="white-text"> <U>  Director: </U> </H2> 
+<H3 class="white-text"> Ron Howard </H3>
+<BR> 
+<H2 class="white-text"> <U>  Writers: </U> </H2> 
+<H3 class="white-text"> Akiva Goldsman - Dan Brown (novel writer) </H3>
+<BR>
+<H2 class="white-text"> <U>  Starring: </U> </H2> 
+<H3 class="white-text"> Tom Hanks </H3>
+<H3 class="white-text"> Audrey Tautou </H3>
+<H3 class="white-text"> Jean Reno </H3>
+<BR>
+<HR>
+<h2 class="white-text"><u>Trailer:</u></h2>
+
+<div class="video-container">
+  <video id="myVideo" width="640" height="360">
+    <source src="THE DA VINCI CODE - Official Trailer [2006] (HD) - Sony Pictures Entertainment (720p, h264, youtube).mp4" type="video/mp4">
+    Το πρόγραμμα περιήγησής σας δεν υποστηρίζει το βίντεο.
+  </video>
+
+  <!-- Progress bar πάνω από όλα -->
+  <div class="progress-container">
+    <label class="white-text">Progress:</label>
+    <input type="range" id="progressBar" min="0" max="100" value="0">
+  </div>
+
+  <!-- Controls κάτω από το progress bar -->
+  <div class="controls">
+    <button onclick="playVideo()">Play</button>
+    <button onclick="pauseVideo()">Pause</button>
+    <button onclick="muteVideo()">Mute/Unmute</button>
+    <button onclick="toggleFullScreen()">Fullscreen</button>
+
+    <!-- Volume slider δίπλα από τα κουμπιά -->
+    <label class="white-text">Volume:
+      <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1">
+    </label>
+  </div>
+</div>
+
+<style>
+  /* Container του βίντεο */
+  .video-container {
+    width: 640px;
+    position: relative;
+    margin-top: 10px;
+    background-color: black;
+    padding: 10px;
+  }
+
+  /* Progress bar πάνω από όλα */
+  .progress-container {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  /* Controls κάτω από progress bar */
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  button {
+    margin-right: 5px;
+  }
+
+  input[type="range"] {
+    vertical-align: middle;
+  }
+
+  /* Λευκά γράμματα για labels */
+  .white-text {
+    color: white;
+    font-weight: bold;
+  }
+
+  /* Κάνουμε τον slider του ήχου και progress πιο εμφανή */
+  #progressBar, #volumeControl {
+    width: 200px;
+  }
+</style>
+
+<script>
+const video = document.getElementById("myVideo");
+const progressBar = document.getElementById("progressBar");
+const volumeControl = document.getElementById("volumeControl");
+
+// Play / Pause / Mute / Volume
+function playVideo() {
+  video.play();
+}
+
+function pauseVideo() {
+  video.pause();
+}
+
+function muteVideo() {
+  video.muted = !video.muted;
+}
+
+volumeControl.addEventListener('input', () => {
+  video.volume = volumeControl.value;
+});
+
+// Fullscreen
+function toggleFullScreen() {
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) { /* Safari */
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) { /* IE11 */
+    video.msRequestFullscreen();
+  }
+}
+
+// Update progress bar while playing
+video.addEventListener('timeupdate', () => {
+  const value = (100 / video.duration) * video.currentTime;
+  progressBar.value = value;
+});
+
+// Seek video when slider is moved
+progressBar.addEventListener('input', () => {
+  video.currentTime = video.duration * (progressBar.value / 100);
+});
+</script>
+<style>
+  .white-text {
+    color: white;
+  }
+</style>
 <style>
   .center {
     text-align: center;
   }
+</style>
+<style>
+  body {
+    margin: 100px;   
+  }
+</style>
+<style>
+.container {
+    display: flex;           
+    align-items: flex-start; 
+    gap: 20px;              
+}
 </style>
 </BODY>
 </HTML>
